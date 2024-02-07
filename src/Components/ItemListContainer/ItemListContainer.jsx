@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Counter from "../Counter/Counter";
-
+import ItemCounter from "../ItemCounter/ItemCounter";
+import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = ({ greeting }) => {
   const [catalogo, setCatalogo] = useState([]);
@@ -22,24 +22,15 @@ const ItemListContainer = ({ greeting }) => {
     <>
       <h2>{greeting}</h2>
 
-      {catalogo.length == 0 ? (
-        <h2>Cargando...</h2>
-      ) : (
-        catalogo.map((producto, indice) => {
-          return (
-            
-              <div key={indice}>
-                <h2># {producto.id}</h2>
-                <h3>Nombre: {producto.nombre}</h3>
-                <h3>Precio: ${producto.precio}</h3>
-                <h3>Categoria:{producto.categoria}</h3>
-              </div>
-            
-          )
-        })
-      )}
+      {catalogo.length == 0
+      ?
+      <h2>Cargando...</h2>
+      : 
+      <ItemList catalogo={catalogo}/>
 
-      <Counter />
+}
+
+      <ItemCounter/>
     </>
   );
 };

@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Counter = () => {
+const ItemCounter = () => {
     
 
     const [contadorProductos, setContador] = useState(1);
@@ -42,4 +42,4 @@ const Counter = () => {
     )
 }
 
-export default Counter
+export default ItemCounter
