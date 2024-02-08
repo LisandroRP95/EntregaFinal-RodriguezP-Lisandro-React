@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import ItemCounter from "../ItemCounter/ItemCounter";
 import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = ({ greeting }) => {
@@ -27,10 +26,7 @@ const ItemListContainer = ({ greeting }) => {
       <h2>Cargando...</h2>
       : 
       <ItemList catalogo={catalogo}/>
-
 }
-
-      <ItemCounter/>
     </>
   );
 };
