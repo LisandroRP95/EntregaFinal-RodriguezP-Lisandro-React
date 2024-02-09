@@ -1,6 +1,6 @@
+import ItemCounter from "../ItemCounter/ItemCounter"
 
-
-export const ItemDetail = ({producto}) => {
+const ItemDetail = ({producto}) => {
   return (
     <div>
        
@@ -11,7 +11,10 @@ export const ItemDetail = ({producto}) => {
         <p>Categoria: {producto.categoria}</p>
         <p>Stock: {producto.stock}</p>
         <p>Descripcion: {producto.descripcion}</p>
-    l</div>
+
+    <ItemCounter initial={1} stock={producto.stock} />
+
+    </div>
   )
 }
 

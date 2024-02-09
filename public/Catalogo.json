@@ -5,7 +5,7 @@
          "nombre": "Escritorio Grecia",
          "precio": 80000,
          "categoria": "escritorio",
-         "stock": 10,
+         "stock": 12,
          "imagen": "/src/assets/img/escritoriogrecia.jpg",
          "descripcion": "Escritorio de pino de 2 x 0.8 x 1" 
     },
@@ -24,7 +24,7 @@
         "nombre": "Lampara MQ-85",
         "precio": 30000,
         "categoria": "iluminacion",
-        "stock": 10,
+        "stock": 70,
         "imagen": "/src/assets/img/lampara-mq85.jpg",
         "descripcion": "Velador Escritorio Led Usb Flexible Moderno Luz Cálida Fria Color de la estructura Negro"   
     },
@@ -33,7 +33,7 @@
         "nombre": "Lampara PR-1002",
         "precio": 35000,
         "categoria": "iluminacion",
-        "stock": 10,
+        "stock": 40,
         "imagen": "/src/assets/img/lampara-pr1002.jpg",
         "descripcion": "Lampara Luz Monitor Escritorio Pc Led Usb Portatil"   
     },
@@ -42,7 +42,7 @@
         "nombre": "Silla ergonómica Pro",
         "precio": 760000,
         "categoria": "silla",
-        "stock": 10,
+        "stock": 6,
         "imagen": "/src/assets/img/silla-inpro.png",
         "descripcion": "Silla ergonómica con soporte lumbar. Tiene un mecanismo que sigue automáticamente el movimiento de la parte inferior de la espalda"   
     },
@@ -51,7 +51,7 @@
         "nombre": "Corsair T3 Rush Carbon V2 2023",
         "precio": 520000,
         "categoria": "silla",
-        "stock": 10,
+        "stock": 15,
         "imagen": "/src/assets/img/silla-t3-rush.png",
         "descripcion": "La silla de juegos CORSAIR T3 RUSH combina un diseño inspirado en las carreras y una comodidad contorneada con un exterior de tela suave y transpirable, una almohada cervical acolchada y un soporte lumbar de espuma viscoelástica."   
     }

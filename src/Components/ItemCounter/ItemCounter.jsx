@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ItemCounter = () => {
+const ItemCounter = ({initial, stock}) => {
     
 
     const [contadorProductos, setContador] = useState(1);
@@ -11,12 +11,12 @@ const ItemCounter = () => {
     const contadorCarroRef = useRef(contadorProductos)
   
     const incrementar = () => {
-        if(contadorProductos < 10)[
+        if(contadorProductos < stock)[
         setContador( contadorProductos + 1)] 
     }
     
     const decrementar = () => {
-        if(contadorProductos > 1)[
+        if(contadorProductos > initial)[
         setContador(contadorProductos - 1)]
     }
     
@@ -32,7 +32,7 @@ const ItemCounter = () => {
   
     return (
     <>
-      <h3>Contador: {contadorProductos}</h3>
+      <p>Contador: {contadorProductos}</p>
       <Button onClick={incrementar} variant="outline-success">+ Agregar</Button>{' '}
       <Button onClick={decrementar} variant="outline-danger">- Eliminar</Button>{' '}
       <Button onClick={resetear} as="input" type="reset" value="Resetear contador" />{' '}
