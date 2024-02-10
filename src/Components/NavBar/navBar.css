@@ -6,4 +6,12 @@
 .formInicio{
     text-decoration: none;
     margin-top: 5%;
+    margin-left: 15%;
+}
+
+.logo{
+    text-align: center;
+    text-decoration: none;
+    color: rgb(49, 182, 212);
+    border-style:groove
 }

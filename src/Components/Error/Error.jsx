@@ -1,7 +1,8 @@
 
 const Error = () => {
   return (
-    <div>Clase numero 9 tiempo 1:12:00 </div>
+ 
+      <h1>Ha habido un error, volve a la pagina principal</h1>
   )
 }
 

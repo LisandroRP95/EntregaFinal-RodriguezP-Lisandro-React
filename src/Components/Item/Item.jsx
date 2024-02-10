@@ -4,7 +4,7 @@ import './item.css'
 const Item = ({ producto }) => {
   return (
 
-  <Link to={'/'}>
+  <Link to={`/detalle/${producto.id}`}>
       <div key={producto.id} className="centrarItems">
         <img src={producto.imagen} alt={producto.nombre} />
         <p># {producto.id}</p>

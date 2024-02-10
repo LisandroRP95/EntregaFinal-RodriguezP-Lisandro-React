@@ -4,7 +4,7 @@
          "id": 1,
          "nombre": "Escritorio Grecia",
          "precio": 80000,
-         "categoria": "escritorio",
+         "categoria": "escritorios",
          "stock": 12,
          "imagen": "/src/assets/img/escritoriogrecia.jpg",
          "descripcion": "Escritorio de pino de 2 x 0.8 x 1" 
@@ -14,7 +14,7 @@
         "id": 2,
         "nombre": "Escritorio Hesse",
         "precio": 90000,
-        "categoria": "escritorio",
+        "categoria": "escritorios",
         "stock": 10,
         "imagen": "/src/assets/img/escritorio-hesse.jpg",
         "descripcion": "Escritorio de melamina de 2 x 0.8 x 1" 
@@ -41,7 +41,7 @@
         "id": 5,
         "nombre": "Silla ergonómica Pro",
         "precio": 760000,
-        "categoria": "silla",
+        "categoria": "sillas",
         "stock": 6,
         "imagen": "/src/assets/img/silla-inpro.png",
         "descripcion": "Silla ergonómica con soporte lumbar. Tiene un mecanismo que sigue automáticamente el movimiento de la parte inferior de la espalda"   
@@ -50,7 +50,7 @@
         "id": 6,
         "nombre": "Corsair T3 Rush Carbon V2 2023",
         "precio": 520000,
-        "categoria": "silla",
+        "categoria": "sillas",
         "stock": 15,
         "imagen": "/src/assets/img/silla-t3-rush.png",
         "descripcion": "La silla de juegos CORSAIR T3 RUSH combina un diseño inspirado en las carreras y una comodidad contorneada con un exterior de tela suave y transpirable, una almohada cervical acolchada y un soporte lumbar de espuma viscoelástica."   

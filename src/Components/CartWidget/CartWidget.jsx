@@ -16,7 +16,7 @@ const CartWidget = () => {
                   width={50}
                   height={50}
                   alt="171x180"
-                  src="./src/assets/cart-xs.svg"
+                  src="/src/assets/cart-xs.svg"
                 />
               </Figure>
             </Col>

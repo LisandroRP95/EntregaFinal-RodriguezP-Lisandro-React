@@ -1,7 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from '../CartWidget/CartWidget';
 import { NavLink } from 'react-router-dom';
 import './navBar.css'
@@ -12,21 +11,19 @@ const NavBar = () => {
     <>
      <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">LRP SetUp Center</Navbar.Brand>
+        <NavLink to={'/'}>
+          <h4 className='logo'>LRP SetUp Center</h4>
+        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
 
             <NavLink className='formInicio' to={'/'}>Inicio</NavLink>
-            <NavDropdown title="Categorias" id="basic-nav-dropdown">
+            {/* <NavDropdown title="Categorias" id="basic-nav-dropdown"> */}
               
-              <NavLink className='enlaces' to={'/categorias/escritorios'}>Escritorios</NavLink><br />
-              <NavLink className='enlaces' to={'/categorias/iluminacion'}>Iluminación</NavLink><br />
-              <NavLink className='enlaces' to={'/categorias/sillas'}>Sillas</NavLink>
-              
-              <NavDropdown.Divider />
-              <NavDropdown.Item>Galeria de ejemplos</NavDropdown.Item>
-            </NavDropdown>
+              <NavLink className='enlaces' to={'/categoria/escritorios'}>Escritorios</NavLink>
+              <NavLink className='enlaces' to={'/categoria/iluminacion'}>Iluminación</NavLink>
+              <NavLink className='enlaces' to={'/categoria/sillas'}>Sillas</NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
