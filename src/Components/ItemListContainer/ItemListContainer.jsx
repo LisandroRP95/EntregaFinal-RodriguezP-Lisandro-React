@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ItemList from "../ItemList/ItemList";
+import './itemListContainer.css'
 
 const ItemListContainer = ({ greeting }) => {
   const [catalogo, setCatalogo] = useState([]);
@@ -19,7 +20,7 @@ const ItemListContainer = ({ greeting }) => {
 
   return (
     <>
-      <h2>{greeting}</h2>
+      <h2 className="margenLista">{greeting}</h2>
 
       {catalogo.length == 0
       ?

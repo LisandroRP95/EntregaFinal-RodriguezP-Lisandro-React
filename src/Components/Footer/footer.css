@@ -1,5 +1,13 @@
 .formatoFooter {
   text-align: center;
+  align-items: center;
   color: blanchedalmond;
   background-color: black;
+  display: flex;
+  max-width: 100vmax;
+  height: 15vh;
+  border-radius: 0%;
+  justify-content: center;
+  margin: 0%;
+
 }
