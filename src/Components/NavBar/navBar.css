@@ -1,3 +1,8 @@
+.active{
+    font-weight: bolder;
+    color: blueviolet;
+}
+
 .enlaces{
     margin-left: 20%;
     text-decoration: none;
@@ -5,7 +10,6 @@
 
 .formInicio{
     text-decoration: none;
-    margin-top: 5%;
     margin-left: 15%;
 }
 
