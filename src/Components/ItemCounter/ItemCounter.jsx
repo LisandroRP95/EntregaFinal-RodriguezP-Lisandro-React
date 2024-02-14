@@ -2,6 +2,8 @@ import {useState, useRef} from 'react';
 import Button from 'react-bootstrap/Button';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
+import './itemCounter.css'
 
 const ItemCounter = ({initial, stock}) => {
     
@@ -28,6 +30,7 @@ const ItemCounter = ({initial, stock}) => {
     const agregarCarroRef = () => {
         contadorCarroRef.current = contadorProductos;
         toast(`Se agregaron ${contadorProductos} productos al carrito de compras`);
+        <link rel="stylesheet" href="" />
       }
   
     return (
@@ -36,7 +39,9 @@ const ItemCounter = ({initial, stock}) => {
       <Button onClick={incrementar} variant="outline-success">+ Agregar</Button>{' '}
       <Button onClick={decrementar} variant="outline-danger">- Eliminar</Button>{' '}
       <Button onClick={resetear} as="input" type="reset" value="Resetear contador" />{' '}
-      <Button onClick={agregarCarroRef} variant="primary">Agregar al carrito</Button>{' '}
+      <Button onClick={agregarCarroRef} variant="primary">
+        <Link className='bntCarroCompras' to={'/cart'}>Agregar al carrito</Link>
+        </Button>{' '}
       <ToastContainer/>
     </>
     )
