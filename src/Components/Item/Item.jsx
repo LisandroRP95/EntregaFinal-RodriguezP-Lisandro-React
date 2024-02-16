@@ -1,18 +1,25 @@
 import { Link } from "react-router-dom";
-import './item.css'
+import "./item.css";
+import Card from "react-bootstrap/Card";
 
 const Item = ({ producto }) => {
   return (
-
-  <Link to={`/detalle/${producto.id}`}>
-      <div key={producto.id} className="centrarItems">
-        <img src={producto.imagen} alt={producto.nombre} />
-        <p># {producto.id}</p>
-        <p>Nombre: {producto.nombre}</p>
-        <p>Precio: ${producto.precio}</p>
-        <p>Categoria: {producto.categoria}</p>
-      </div>
-      </Link>
+    <Link
+      key={producto.id}
+      className="centrarItems"
+      to={`/detalle/${producto.id}`}
+    >
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant="top" src={producto.imagen} />
+              <Card.Body>
+                <Card.Title>
+                  {producto.id} {producto.nombre}
+                </Card.Title>
+                <Card.Text>${producto.precio}</Card.Text>
+                <Card.Text>Categoria: {producto.categoria}</Card.Text>
+              </Card.Body>
+            </Card>
+    </Link>
   );
 };
 

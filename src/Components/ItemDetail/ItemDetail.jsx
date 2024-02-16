@@ -1,21 +1,26 @@
-import ItemCounter from "../ItemCounter/ItemCounter"
+import ItemCounter from "../ItemCounter/ItemCounter";
+import Card from "react-bootstrap/Card";
 
-const ItemDetail = ({producto}) => {
+
+const ItemDetail = ({ producto }) => {
   return (
     <div>
-       
-        <p># {producto.id}</p>
-        <p>Nombre: {producto.nombre}</p>
-        <img src={producto.imagen} alt={producto.nombre} />
-        <p>Precio: ${producto.precio}</p>
-        <p>Categoria: {producto.categoria}</p>
-        <p>Stock: {producto.stock}</p>
-        <p>Descripcion: {producto.descripcion}</p>
 
-    <ItemCounter initial={1} stock={producto.stock} />
-
+          <Card style={{ width: "18rem" }}>
+            <Card.Img variant="top" src={producto.imagen} />
+            <Card.Body>
+              <Card.Title>
+                {producto.id} {producto.nombre}
+              </Card.Title>
+              <Card.Text>${producto.precio}</Card.Text>
+              <Card.Text>Categoria: {producto.categoria}</Card.Text>
+              <Card.Text>Stock: {producto.stock}</Card.Text>
+              <Card.Text>Descripción: {producto.descripcion}</Card.Text>
+            </Card.Body>
+          </Card>
+      <ItemCounter initial={1} stock={producto.stock} />
     </div>
-  )
-}
+  );
+};
 
-export default ItemDetail
+export default ItemDetail;
