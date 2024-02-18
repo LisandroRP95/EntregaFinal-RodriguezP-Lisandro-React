@@ -1,8 +1,24 @@
+import { useState, useContext } from "react";
 import ItemCounter from "../ItemCounter/ItemCounter";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
+import { CartContext } from "../../Context/CartContext/CartContext";
 
 
 const ItemDetail = ({ producto }) => {
+
+  const [cart, setCart] = useState(false)
+
+  const {agregarCarrito} = useContext(CartContext)
+
+  const onAdd = (counter) => {
+    
+    setCart(true)
+    
+    agregarCarrito(producto, counter)
+
+  }
+
   return (
     <div>
 
@@ -18,7 +34,10 @@ const ItemDetail = ({ producto }) => {
               <Card.Text>Descripción: {producto.descripcion}</Card.Text>
             </Card.Body>
           </Card>
-      <ItemCounter initial={1} stock={producto.stock} />
+
+        {cart ? <Link to={'/cart'}>Ir al carrito</Link> : <ItemCounter initial={1} stock={producto.stock} onAdd={onAdd} /> }
+
+      
     </div>
   );
 };

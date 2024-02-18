@@ -7,11 +7,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Error from "./Components/Error/Error";
 import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./Components/Cart/Cart";
+import CartProvider from "./Context/CartContext/CartContext";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+
+      <CartProvider>
 
        <NavBar/>
 
@@ -30,6 +33,9 @@ function App() {
       </Routes>
 
        <Footer />
+
+       </CartProvider>
+       
       </BrowserRouter>
 
 

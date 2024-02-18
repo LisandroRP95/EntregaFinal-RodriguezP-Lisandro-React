@@ -2,3 +2,8 @@
     text-decoration: none;
     color: blanchedalmond;
 }
+
+.estiloCentrado{
+    text-align: center;
+    align-items: center;
+}

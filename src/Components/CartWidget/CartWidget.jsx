@@ -3,10 +3,17 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Figure from "react-bootstrap/Figure";
+import { useContext } from "react";
+import { CartContext } from "../../Context/CartContext/CartContext";
+import { Link } from "react-router-dom";
 
 const CartWidget = () => {
+
+  const {cantidadTotal} = useContext(CartContext)
+
   return (
     <>
+    <Link to={'/cart'}>
       <Button variant="secondary">
         <Container>
           <Row>
@@ -21,9 +28,10 @@ const CartWidget = () => {
               </Figure>
             </Col>
           </Row>
-          <p>0</p>
+          <p>{cantidadTotal == 0 ? null : cantidadTotal}</p>
         </Container>
       </Button>{" "}
+      </Link>
     </>
   );
 }
