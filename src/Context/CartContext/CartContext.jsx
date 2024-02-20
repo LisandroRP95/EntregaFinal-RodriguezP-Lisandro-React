@@ -36,7 +36,6 @@ const CartProvider = ({ children }) => {
     return totalPrice
   }
 
-  console.log(cart)
 
   return(
     <CartContext.Provider value={{
