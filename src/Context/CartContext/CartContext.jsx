@@ -4,52 +4,52 @@ export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState(0)
-  const [cantidadTotal, setCantidadTotal] = useState(0)
 
-  const agregarCarrito = (producto, counter) => {
-    const cartProduct = {producto, counter}
-    const productIndex = cart.findIndex((p) => p.producto.id == producto.id);
+  const agregarCarrito = (producto, cantidad) => {
+   const productoExistente = cart.findIndex((p) => p.producto.id == producto.id);
 
-    if (productIndex !== -1) {
-      console.log("Existe, lo contamos")
-      cart[productIndex].counter += counter;
+    if (productoExistente == -1) {
+      setCart([...cart, {producto, cantidad}])
     } else {
-      console.log("No existe, lo agregamos");
-      setCart([
-        ...cart,
-        cartProduct
-      ]);
+      const newCart = [...cart]
+      newCart[productoExistente].cantidad += cantidad
+      setCart(newCart)
     }
-    
-    setCantidadTotal(cart.length);
   }
 
-  const eliminarCarrito = () => {
-    
+  const eliminarProducto = (productoId) => {
+    const newCart = cart.filter(item => item.producto.id !== productoId)
+    setCart(newCart)
   }
 
   const vaciarCarrito = () => {
-
+    setCart([])
   }
 
   const cantidadCarrito = () => {
-    
+    const totalQuantity = cart.reduce((total, item) => total+item.cantidad,0)
+    return totalQuantity
   }
 
   const totalCarrito = () => {
+    const totalPrice = cart.reduce((total,item) => total + (item.producto.precio * item.cantidad),0)
+    return totalPrice
   }
 
+  console.log(cart)
 
-
-  return <CartContext.Provider value={{
-    cart,
-    agregarCarrito,
-    total,
-    cantidadTotal
-
-  }}>
-    {children}</CartContext.Provider>;
+  return(
+    <CartContext.Provider value={{
+         cart,
+         agregarCarrito,
+         vaciarCarrito,
+         eliminarProducto,
+         cantidadCarrito,
+         totalCarrito
+    }}>
+         {children}
+    </CartContext.Provider>
+  )
 };
 
 export  default CartProvider;

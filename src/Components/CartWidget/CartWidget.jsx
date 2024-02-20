@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const CartWidget = () => {
 
-  const {cantidadTotal} = useContext(CartContext)
+  const {cantidadCarrito} = useContext(CartContext)
 
   return (
     <>
@@ -28,7 +28,7 @@ const CartWidget = () => {
               </Figure>
             </Col>
           </Row>
-          <p>{cantidadTotal == 0 ? null : cantidadTotal}</p>
+          <p>{cantidadCarrito() == 0 ? null : cantidadCarrito()}</p>
         </Container>
       </Button>{" "}
       </Link>

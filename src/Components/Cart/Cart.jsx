@@ -1,11 +1,12 @@
-import { createContext, useContext } from 'react'
+import { useContext } from 'react'
 import { CartContext } from '../../Context/CartContext/CartContext'
 import { Link } from 'react-router-dom'
 import './cart.css'
+import CartItem from '../CartItem/CartItem'
 
 const Cart = () => {
 
-  const {cart} = useContext(CartContext)
+  const {cart, vaciarCarrito, eliminarProducto,totalCarrito} = useContext(CartContext)
 
   return (
     <div className='text-light'>
@@ -18,6 +19,16 @@ const Cart = () => {
       :
         <>
           <h2>Lista:</h2>
+           
+           {cart.map((p)=>(
+              <CartItem key={p.id} producto={p} eliminarProducto={eliminarProducto}/>
+           ))}
+        
+        
+
+        <p>Total a pagar del carrito: ${totalCarrito()}</p>
+        <button onClick={vaciarCarrito}>Vaciar Carrito</button>
+
         </>
       }
     </div>
