@@ -9,35 +9,36 @@ const CartProvider = ({ children }) => {
 
   const agregarCarrito = (producto, counter) => {
     const cartProduct = {producto, counter}
-    const productIndex = cart.findIndex((p) => p.producto.id == producto.id);
+    const productoExistente = cart.findIndex((p) => p.producto.id == producto.id);
 
-    if (productIndex !== -1) {
-      console.log("Existe, lo contamos")
-      cart[productIndex].counter += counter;
+    if (!productoExistente) {
+      setCart([...cartProduct, {producto, cantidad}])
     } else {
-      console.log("No existe, lo agregamos");
-      setCart([
-        ...cart,
-        cartProduct
-      ]);
+      const newCart = [...cart]
+      newCart[productoExistente].cantidad += cantidad
+      setCart(newCart)
     }
     
     setCantidadTotal(cart.length);
   }
 
-  const eliminarCarrito = () => {
-    
+  const eliminarProducto = (prodcutoId) => {
+    const newCart = cart.filter(item => item.prodcuto.id !== prodcutoId)
+    setCart(newCart)
   }
 
   const vaciarCarrito = () => {
-
+    setCart([])
   }
 
   const cantidadCarrito = () => {
-    
+    const totalQuantity = cart.reduce((total, item) => total+item.cantidad,0)
+    return totalQuantity
   }
 
   const totalCarrito = () => {
+    const totalPrice = cart.reduce((total,item) => total + (item.prodcuto.precio * item.cantidad),0)
+    return totalPrice
   }
 
 
@@ -46,8 +47,11 @@ const CartProvider = ({ children }) => {
     cart,
     agregarCarrito,
     total,
-    cantidadTotal
-
+    cantidadTotal,
+    vaciarCarrito,
+    eliminarProducto,
+    cantidadCarrito,
+    totalCarrito
   }}>
     {children}</CartContext.Provider>;
 };
