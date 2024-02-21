@@ -19,7 +19,6 @@ const NavBar = () => {
           <Nav className="me-auto">
 
             <NavLink className='formInicio' to={'/'}>Inicio</NavLink>
-            {/* <NavDropdown title="Categorias" id="basic-nav-dropdown"> */}
               
               <NavLink className='enlaces' to={'/categoria/escritorios'}>Escritorios</NavLink>
               <NavLink className='enlaces' to={'/categoria/iluminacion'}>Iluminación</NavLink>
