@@ -3,6 +3,7 @@ import ItemCounter from "../ItemCounter/ItemCounter";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext/CartContext";
+import { Container, Row, Col } from 'react-bootstrap';
 
 
 const ItemDetail = ({ producto }) => {
@@ -20,8 +21,11 @@ const ItemDetail = ({ producto }) => {
   }
 
   return (
-    <div>
+    <>
 
+      <Container style={{ height: 'auto' }}>
+      <Row className="justify-content-center align-items-center" style={{ height: 'auto' }}>
+        <Col xs={"auto"} className="text-center">
           <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={producto.imagen} />
             <Card.Body>
@@ -35,10 +39,19 @@ const ItemDetail = ({ producto }) => {
             </Card.Body>
           </Card>
 
-        {cart ? <Link to={'/cart'}>Ir al carrito</Link> : <ItemCounter initial={1} stock={producto.stock} onAdd={onAdd} /> }
+          </Col>
+      </Row>
+      </Container>
 
+      <Container style={{ height: 'auto' }}>
+      <Row className="justify-content-center align-items-center">
+        <Col xs={"auto"} className="text-center">
+        {cart ? <Link to={'/cart'}>Ir al carrito</Link> : <ItemCounter initial={1} stock={producto.stock} onAdd={onAdd} /> }
+        </Col>
+      </Row>
+      </Container>
       
-    </div>
+    </>
   );
 };
 

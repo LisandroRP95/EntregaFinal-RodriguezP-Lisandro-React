@@ -6,6 +6,7 @@ import Figure from "react-bootstrap/Figure";
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext/CartContext";
 import { Link } from "react-router-dom";
+import "./cartWidget.css"
 
 const CartWidget = () => {
 
