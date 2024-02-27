@@ -30,7 +30,7 @@ const ItemDetail = ({ producto }) => {
             <Card.Img variant="top" src={producto.imagen} />
             <Card.Body>
               <Card.Title>
-                {producto.id} {producto.nombre}
+                {producto.nombre}
               </Card.Title>
               <Card.Text>${producto.precio}</Card.Text>
               <Card.Text>Categoria: {producto.categoria}</Card.Text>

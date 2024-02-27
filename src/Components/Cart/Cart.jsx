@@ -9,7 +9,7 @@ const Cart = () => {
   const {cart, vaciarCarrito, eliminarProducto,totalCarrito} = useContext(CartContext)
 
   return (
-    <div className='text-light'>
+    <div>
       {cart.length == 0
       ?
         <>
@@ -27,7 +27,9 @@ const Cart = () => {
         
 
         <p>Total a pagar del carrito: ${totalCarrito()}</p>
-        <button onClick={vaciarCarrito}>Vaciar Carrito</button>
+        <button onClick={vaciarCarrito}>Vaciar Carrito</button><br />
+
+        <Link to={'/checkout'}>Finalizar Compra</Link>
 
         </>
       }
