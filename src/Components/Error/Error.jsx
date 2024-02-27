@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom"
+import './error.css'
 
 const Error = () => {
   return (
- 
-      <h1>Ha habido un error, volve a la pagina principal</h1>
+      <div>
+          <h1>Ha habido un error, volve a la <Link className="estiloLink" to={'/'}>pagina principal</Link></h1>
+      </div>
   )
 }
 

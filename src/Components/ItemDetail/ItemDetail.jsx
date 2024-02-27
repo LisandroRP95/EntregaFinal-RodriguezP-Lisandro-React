@@ -43,14 +43,13 @@ const ItemDetail = ({ producto }) => {
       </Row>
       </Container>
 
-      <Container style={{ height: 'auto' }}>
+      {producto.stock == 0 ? <h3>El producto no tiene stock</h3> :       <Container style={{ height: 'auto' }}>
       <Row className="justify-content-center align-items-center">
         <Col xs={"auto"} className="text-center">
         {cart ? <Link to={'/cart'}>Ir al carrito</Link> : <ItemCounter initial={1} stock={producto.stock} onAdd={onAdd} /> }
         </Col>
       </Row>
-      </Container>
-      
+      </Container>}      
     </>
   );
 };

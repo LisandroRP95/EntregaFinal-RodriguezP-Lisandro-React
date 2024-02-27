@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { collection, addDoc, updateDoc, getDoc, doc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, getDoc, doc, getFirestore } from "firebase/firestore";
 import { CartContext } from "../../Context/CartContext/CartContext";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
@@ -30,6 +30,51 @@ const Checkout = () => {
       setError("Las cuentas de email no coinciden")
       return;
     }
+
+    const db = getFirestore()
+
+    const compraRealizada = {
+      items: cart.map((producto) => ({
+        id: producto.producto.id,
+        nombre: producto.producto.nombre,
+        cantidad: producto.cantidad
+      })),
+      total: totalCarrito(),
+      fecha: new Date(),
+      nombre,
+      apellido,
+      ciudad,
+      codigoPostal,
+      email,
+      telefono
+    }
+
+    Promise.all(
+      compraRealizada.items.map(async (productoOrden) => {
+        const productoRef = doc(db, "item", productoOrden.id);
+        const productoDoc = await getDoc(productoRef);
+        const stockActual = productoDoc.data().stock
+
+        await updateDoc(productoRef,{
+          stock: stockActual - productoOrden.cantidad
+        })
+      })
+    ).then(() =>{
+      addDoc(collection(db, "compras"),compraRealizada)
+      .then((docRef) => {
+        setError('')
+        setIdCompra(docRef.id)
+        vaciarCarrito()
+
+      }).catch((error) =>{
+        console.log(error)
+        setError('Se produjo un error al crear la orden')
+      })
+
+    }).catch((error) => {
+      console.log(error);
+      setError('No se puede actualizar el stock')
+    })
   
   };
 
