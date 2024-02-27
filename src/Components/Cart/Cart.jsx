@@ -21,7 +21,7 @@ const Cart = () => {
           <h2>Lista:</h2>
            
            {cart.map((p)=>(
-              <CartItem key={p.id} producto={p} eliminarProducto={eliminarProducto}/>
+              <CartItem key={p.producto.id} producto={p} eliminarProducto={eliminarProducto}/>
            ))}
         
         

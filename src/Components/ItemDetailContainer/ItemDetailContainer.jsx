@@ -13,13 +13,14 @@ const ItemDetailContainer = () => {
 
           const db = getFirestore()
 
-    const productRef = doc(db, "item", "BWI4o9WsEFOBcQNYOQrm")
+    const productRef = doc(db, "item", id)
 
     getDoc(productRef).then((snapshot) => {
       if (snapshot.exists){
         setProducto({id: snapshot.id,...snapshot.data()})
       }
     })
+      .catch(error => console.log(error))
   },[id])
 
   return (
