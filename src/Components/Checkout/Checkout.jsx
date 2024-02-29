@@ -1,13 +1,12 @@
 import { useState, useContext } from "react";
-import { collection,
-  addDoc, updateDoc,
-  getDoc, doc, getFirestore } from "firebase/firestore";
+import { collection, addDoc, updateDoc, getDoc, doc } from "firebase/firestore";
 import { CartContext } from "../../Context/CartContext/CartContext";
+import { db } from "../../Firebase/Config";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 
 const Checkout = () => {
-  const { cart, vaciarCarrito, cantidadCarrito, totalCarrito } =
+  const { cart, vaciarCarrito, totalCarrito } =
     useContext(CartContext);
 
   const [nombre, setNombre] = useState("");
@@ -41,7 +40,6 @@ const Checkout = () => {
       return;
     }
 
-    const db = getFirestore();
 
     const compraRealizada = {
       items: cart.map((producto) => ({
