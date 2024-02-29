@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext/CartContext";
 import { Container, Row, Col } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
 const ItemDetail = ({ producto }) => {
   const [cart, setCart] = useState(false);
@@ -45,7 +46,10 @@ const ItemDetail = ({ producto }) => {
           <Row className="justify-content-center align-items-center">
             <Col xs={"auto"} className="text-center">
               {cart ? (
-                <Link to={"/cart"}>Ir al carrito</Link>
+                <Link to={"/cart"}>
+                  <Button variant="secondary">Ir al carrito</Button>
+                 
+                  </Link>
               ) : (
                 <ItemCounter initial={1} stock={producto.stock} onAdd={onAdd} />
               )}

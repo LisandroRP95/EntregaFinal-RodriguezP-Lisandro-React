@@ -32,7 +32,7 @@ const ItemListContainer = () => {
       {catalogo.length == 0 ? (
         <h2>Cargando productos, por favor espere</h2>
       ) : (
-        <ItemList catalogo={catalogo} />
+        <ItemList className catalogo={catalogo} />
       )}
     </>
   );

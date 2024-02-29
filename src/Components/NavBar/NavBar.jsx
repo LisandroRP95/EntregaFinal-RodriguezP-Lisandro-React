@@ -3,6 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import CartWidget from "../CartWidget/CartWidget";
 import { NavLink } from "react-router-dom";
+import Figure from "react-bootstrap/Figure";
 import "./navBar.css";
 
 const NavBar = () => {
@@ -15,8 +16,13 @@ const NavBar = () => {
         className="bg-body-tertiary"
       >
         <Container>
+      
+
           <NavLink to={"/"}>
-            <h4 className="logo">LRP SetUp Center</h4>
+          <Figure>
+             <Figure.Image  width={50} height={50} alt="171x180" src="/src/assets/img/LRP.jpeg"/>
+          </Figure>
+          <h4 className="logo">LRP Set UP Center</h4>
           </NavLink>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

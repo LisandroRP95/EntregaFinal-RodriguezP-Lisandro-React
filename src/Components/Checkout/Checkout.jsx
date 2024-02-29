@@ -2,8 +2,7 @@ import { useState, useContext } from "react";
 import { collection, addDoc, updateDoc, getDoc, doc } from "firebase/firestore";
 import { CartContext } from "../../Context/CartContext/CartContext";
 import { db } from "../../Firebase/Config";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
-import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button';
 
 const Checkout = () => {
   const { cart, vaciarCarrito, totalCarrito } =
@@ -96,19 +95,20 @@ const Checkout = () => {
         {cart.map((producto) => (
           <div key={producto.producto.id}>
             <p>
-              {producto.producto.nombre} x {producto.cantidad}
+              {producto.producto.nombre} x {producto.cantidad}         
             </p>
+            <img src={producto.producto.imagen} alt={producto.producto.nombre} />
           </div>
         ))}
 
-        <div>
+        <div><br />
           <label htmlFor="Nombre">Nombre: *</label>
           <input
             name="Nombre"
             type="text"
             onChange={(e) => setNombre(e.target.value)}
           />
-        </div>
+        </div><br />
 
         <div>
           <label htmlFor="Apellido">Apellido: *</label>
@@ -117,7 +117,7 @@ const Checkout = () => {
             type="text"
             onChange={(e) => setApellido(e.target.value)}
           />
-        </div>
+        </div><br />
 
         <div>
           <label htmlFor="Telefono">Telefono: *</label>
@@ -126,7 +126,7 @@ const Checkout = () => {
             type="number"
             onChange={(e) => setTelefono(e.target.value)}
           />
-        </div>
+        </div><br />
 
         <div>
           <label htmlFor="Ciudad">Ciudad: *</label>
@@ -135,7 +135,7 @@ const Checkout = () => {
             type="text"
             onChange={(e) => setCiudad(e.target.value)}
           />
-        </div>
+        </div><br />
 
         <div>
           <label htmlFor="CodigoPostal">C. Postal: *</label>
@@ -144,7 +144,7 @@ const Checkout = () => {
             type="number"
             onChange={(e) => setCodigoPostal(e.target.value)}
           />
-        </div>
+        </div><br />
 
         <div>
           <label htmlFor="email">email: *</label>
@@ -153,7 +153,7 @@ const Checkout = () => {
             type="text"
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
+        </div><br />
 
         <div>
           <label htmlFor="EmailConfirm">Confirmar email: *</label>
@@ -162,8 +162,9 @@ const Checkout = () => {
             type="text"
             onChange={(e) => setEmailConfirm(e.target.value)}
           />
-        </div>
-        <button type="submit">Comprar</button>
+        </div><br />
+        
+        <Button variant="success" type="submit">Comprar</Button>
       </form>
 
       {error && <p>{error}</p>}
@@ -172,14 +173,6 @@ const Checkout = () => {
         <p>Muchas gracias por tu compra, tu ID de transacción es: {idCompra}</p>
       )}
 
-      {/* <div>
-        <FloatingLabel
-        controlId="floatingInput"
-        label="email"
-        className="mb-6">
-        <Form.Control type="email" placeholder="nombre@email.com" />
-      </FloatingLabel>
-        </div> */}
     </>
   );
 };
