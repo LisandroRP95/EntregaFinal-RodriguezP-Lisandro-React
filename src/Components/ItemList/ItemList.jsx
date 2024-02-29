@@ -4,11 +4,7 @@ const ItemList = ({ catalogo }) => {
   return (
     <>
       {catalogo.map((producto) => {
-        return (
-
-            <Item key={producto.id} producto={producto}/>
-
-        );
+        return <Item key={producto.id} producto={producto} />;
       })}
     </>
   );

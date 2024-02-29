@@ -1,5 +1,7 @@
 import { useState, useContext } from "react";
-import { collection, addDoc, updateDoc, getDoc, doc, getFirestore } from "firebase/firestore";
+import { collection,
+  addDoc, updateDoc,
+  getDoc, doc, getFirestore } from "firebase/firestore";
 import { CartContext } from "../../Context/CartContext/CartContext";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
@@ -19,25 +21,33 @@ const Checkout = () => {
   const [idCompra, setIdCompra] = useState("");
 
   const formManager = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
-    if(!nombre || !apellido || !telefono || !ciudad || !codigoPostal || !email || !emailConfirm ){
-     setError("Completar los campos requeridos")
-     return; 
-    }
-
-    if(email !== emailConfirm){
-      setError("Las cuentas de email no coinciden")
+    if (
+      !nombre ||
+      !apellido ||
+      !telefono ||
+      !ciudad ||
+      !codigoPostal ||
+      !email ||
+      !emailConfirm
+    ) {
+      setError("Completar los campos requeridos");
       return;
     }
 
-    const db = getFirestore()
+    if (email !== emailConfirm) {
+      setError("Las cuentas de email no coinciden");
+      return;
+    }
+
+    const db = getFirestore();
 
     const compraRealizada = {
       items: cart.map((producto) => ({
         id: producto.producto.id,
         nombre: producto.producto.nombre,
-        cantidad: producto.cantidad
+        cantidad: producto.cantidad,
       })),
       total: totalCarrito(),
       fecha: new Date(),
@@ -46,36 +56,36 @@ const Checkout = () => {
       ciudad,
       codigoPostal,
       email,
-      telefono
-    }
+      telefono,
+    };
 
     Promise.all(
       compraRealizada.items.map(async (productoOrden) => {
         const productoRef = doc(db, "item", productoOrden.id);
         const productoDoc = await getDoc(productoRef);
-        const stockActual = productoDoc.data().stock
+        const stockActual = productoDoc.data().stock;
 
-        await updateDoc(productoRef,{
-          stock: stockActual - productoOrden.cantidad
-        })
+        await updateDoc(productoRef, {
+          stock: stockActual - productoOrden.cantidad,
+        });
       })
-    ).then(() =>{
-      addDoc(collection(db, "compras"),compraRealizada)
-      .then((docRef) => {
-        setError('')
-        setIdCompra(docRef.id)
-        vaciarCarrito()
-
-      }).catch((error) =>{
-        console.log(error)
-        setError('Se produjo un error al crear la orden')
+    )
+      .then(() => {
+        addDoc(collection(db, "compras"), compraRealizada)
+          .then((docRef) => {
+            setError("");
+            setIdCompra(docRef.id);
+            vaciarCarrito();
+          })
+          .catch((error) => {
+            console.log(error);
+            setError("Se produjo un error al crear la orden");
+          });
       })
-
-    }).catch((error) => {
-      console.log(error);
-      setError('No se puede actualizar el stock')
-    })
-  
+      .catch((error) => {
+        console.log(error);
+        setError("No se puede actualizar el stock");
+      });
   };
 
   return (
@@ -94,7 +104,7 @@ const Checkout = () => {
         ))}
 
         <div>
-          <label htmlFor="Nombre">Nombre:  *</label>
+          <label htmlFor="Nombre">Nombre: *</label>
           <input
             name="Nombre"
             type="text"
@@ -112,7 +122,7 @@ const Checkout = () => {
         </div>
 
         <div>
-          <label htmlFor="Telefono">Telefono:  *</label>
+          <label htmlFor="Telefono">Telefono: *</label>
           <input
             name="Telefono"
             type="number"
@@ -121,7 +131,7 @@ const Checkout = () => {
         </div>
 
         <div>
-          <label htmlFor="Ciudad">Ciudad:  *</label>
+          <label htmlFor="Ciudad">Ciudad: *</label>
           <input
             name="Ciudad"
             type="text"
@@ -130,7 +140,7 @@ const Checkout = () => {
         </div>
 
         <div>
-          <label htmlFor="CodigoPostal">C. Postal:  *</label>
+          <label htmlFor="CodigoPostal">C. Postal: *</label>
           <input
             name="CodigoPostal"
             type="number"
@@ -139,7 +149,7 @@ const Checkout = () => {
         </div>
 
         <div>
-          <label htmlFor="email">email:  *</label>
+          <label htmlFor="email">email: *</label>
           <input
             name="email"
             type="text"
@@ -148,7 +158,7 @@ const Checkout = () => {
         </div>
 
         <div>
-          <label htmlFor="EmailConfirm">Confirmar email:  *</label>
+          <label htmlFor="EmailConfirm">Confirmar email: *</label>
           <input
             name="EmailConfirm"
             type="text"
@@ -157,7 +167,6 @@ const Checkout = () => {
         </div>
         <button type="submit">Comprar</button>
       </form>
-    
 
       {error && <p>{error}</p>}
 
